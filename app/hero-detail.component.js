@@ -9,18 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var hero_service_1 = require('./hero.service');
 var HeroDetailComponent = (function () {
-    function HeroDetailComponent(heroService, routeParams) {
+    function HeroDetailComponent(heroService, route) {
         this.heroService = heroService;
-        this.routeParams = routeParams;
+        this.route = route;
     }
     HeroDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var id = +this.routeParams.get('id');
-        this.heroService.getHero(id)
-            .then(function (hero) { return _this.hero = hero; });
+        this.sub = this.route.params.subscribe(function (params) {
+            var id = +params['id'];
+            _this.heroService.getHero(id)
+                .then(function (hero) { return _this.hero = hero; });
+        });
+    };
+    HeroDetailComponent.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
     };
     HeroDetailComponent.prototype.goBack = function () {
         window.history.back();
@@ -29,10 +34,16 @@ var HeroDetailComponent = (function () {
         core_1.Component({
             selector: 'my-hero-detail',
             templateUrl: 'app/hero-detail.component.html',
+            styleUrls: ['app/hero-detail.component.css']
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService, router_deprecated_1.RouteParams])
+        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute])
     ], HeroDetailComponent);
     return HeroDetailComponent;
 }());
 exports.HeroDetailComponent = HeroDetailComponent;
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/ 
 //# sourceMappingURL=hero-detail.component.js.map

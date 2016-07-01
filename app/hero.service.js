@@ -8,14 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
 var mock_heroes_1 = require('./mock-heroes');
+var core_1 = require('@angular/core');
 var HeroService = (function () {
     function HeroService() {
     }
     HeroService.prototype.getHeroes = function () {
         return Promise.resolve(mock_heroes_1.HEROES);
     };
+    // See the "Take it slow" appendix
     HeroService.prototype.getHeroesSlowly = function () {
         return new Promise(function (resolve) {
             return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
@@ -34,4 +35,9 @@ var HeroService = (function () {
     return HeroService;
 }());
 exports.HeroService = HeroService;
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/ 
 //# sourceMappingURL=hero.service.js.map
