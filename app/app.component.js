@@ -22,7 +22,7 @@ var AppComponent = (function () {
             styleUrls: ['app/app.component.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [
-                hero_service_1.HeroService
+                hero_service_1.HeroService,
             ]
         }), 
         __metadata('design:paramtypes', [])
@@ -30,9 +30,4 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/ 
 //# sourceMappingURL=app.component.js.map
